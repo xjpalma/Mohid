@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #==============================================================================
 #title           : compile_mohid.sh
 #description     : This script is an attempt to compile MOHID in a linux
@@ -26,6 +26,7 @@ IS_DEBUG=false # default : false
 
 # libraries path
 LIB_DIR=$HOME/apps_intel
+
 ZLIB=$LIB_DIR/zlib-1.2.11
 HDF5=$LIB_DIR/hdf5-1.8.15
 NETCDF=$LIB_DIR/netcdf-4.4.1.1
@@ -752,7 +753,8 @@ MOHID_TOOLS() {
     HDF5Exporter
     HDF5Extractor
     HDF5Statistics
-    DDC
+    DDCParser
+    DDCWorker
   )
 
   for tool in ${modules_Mohid_Tools[*]}; do
@@ -829,17 +831,10 @@ MOHID_TOOLS() {
         ModuleHDF5Statistics)
       COMPILE_MOHID_TOOLS modules_HDF5Statistics "$tool"
 
-    elif [ $tool = 'DDC' ]; then
-      cd DDCParser
+    elif [ $tool = 'DDCParser' ]; then
       modules_DDCParser=(
         ModuleHashTable)
-      COMPILE_MOHID_TOOLS modules_DDC "DDCParser"
-      cd ..
-
-      cd DDCWorker
-      modules_DDCWorker=()
-      COMPILE_MOHID_TOOLS modules_DDCWorker "DDCWorker"
-      cd ..
+      COMPILE_MOHID_TOOLS modules_DDCParser "$tool"
 
     elif [ $tool = 'Shell' ]; then
       modules_Shell=(

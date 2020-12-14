@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #==============================================================================
 #title        : install_req.sh
 #description  : This script is an attempt to compile all the necessary libraries
