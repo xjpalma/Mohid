@@ -70,7 +70,7 @@ WARNING=${RED}warning${NC}
 if [ ! -f $ENV ]; then
   ## intel compiler environment
   echo ". ${compilervars} intel64 -platform linux" >> $ENV
-  echo ". ${mpivars.sh} -ofi_internal=1 release" >> $ENV
+  echo ". ${mpivars} -ofi_internal=1 release" >> $ENV
   echo >> $ENV
 fi
 
