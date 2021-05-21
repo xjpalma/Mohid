@@ -24,15 +24,15 @@ or
 ## Compile ##
 To compile MOHID Water and/or MOHID Land, you must compile first MOHID Base 1 and MOHID Base 2. This will create all .mod files used to compile MOHID.
 ```
-./compile.sh -mb1 -mb2
+./compile.sh -v -mb1 -mb2
 ```
 To compile MOHID Water run:
 ```
-./compile.sh -mw
+./compile.sh -v -mw
 ```
 To compile MOHID Land run:
 ```
-./compile.sh -ml
+./compile.sh -v -ml
 ```
 For more information or see all option available, run:
 ```
@@ -76,7 +76,7 @@ export FCFLAGS='-O3 -xHost -ip'
 * If you want to use MPI, install MPI in your system and make MPI flag true in compile.sh. MPI only work if your project has nested domains.
 
 ## Help, Bugs, Feedback ##
-If you need help with compile MOHID in linux, you can hang out by mail: <general@mohid.com> or consult our [wiki](http://wiki.mohid.com). You can also subscribe to our [forum](http://forum.mohid.com). To report bugs, please contact any developers. More information consult <http://www.mohid.com>
+If you need help with compile MOHID in linux, you can hang out by mail: <jorgempalma@tecnico.ulisboa.pt>. More information consult <http://www.mohid.com>
 
 ## License ##
 GNU General Public License. See the [GNU General Public License](http://www.gnu.org/copyleft/gpl.html) web page for more information.
