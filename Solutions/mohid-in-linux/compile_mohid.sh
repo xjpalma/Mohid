@@ -16,7 +16,7 @@ CURDIR=$(pwd)
 set -e
 
 # Choose your compiler
-FC=ifort
+FC=ifort # with mpi active compiler will be mpi${FC}
 
 # environment script
 ENV=$CURDIR/env.sh
@@ -38,8 +38,8 @@ IPHREEQC=$LIB_DIR/iphreeqc-3.3.11-12535
 PHREEQCRM=$LIB_DIR/phreeqcrm-3.3.11-12535
 
 # Activate modules
-USE_OPENMP=true                 # default : true
-USE_MPI=false                   # default : false
+USE_OPENMP=true # default : true
+USE_MPI=false   # default : false
 
 USE_HDF=true                    # default : true
 USE_NETCDF=true                 # default : true

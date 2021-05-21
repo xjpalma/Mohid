@@ -6,8 +6,8 @@
 #               and Intel compiler. For more information consult
 #               http://wiki.mohid.com and http://forum.mohid.com
 #author       : Jorge Palma (jorgempalma@tecnico.ulisboa.pt)
-#date         : 20180712
-#update       : 20201214
+#created      : 20180712
+#updated      : 20210521
 #usage        : bash install_req.sh
 #notes        :
 #==============================================================================
@@ -69,9 +69,9 @@ WARNING=${RED}warning${NC}
 
 if [ ! -f $ENV ]; then
   ## intel compiler environment
-  echo ". ${compilervars} intel64 -platform linux" >> $ENV
-  echo ". ${mpivars} -ofi_internal=1 release" >> $ENV
-  echo >> $ENV
+  echo ". ${compilervars} intel64 -platform linux" >>$ENV
+  echo ". ${mpivars} -ofi_internal=1 release" >>$ENV
+  echo >>$ENV
 fi
 
 #### FUNCTIONS ####
@@ -162,12 +162,12 @@ OPT_MPICH() {
   ##--with-pm=smpd --with-pmi=smpd
   make || exit 1
   $sudo make install || exit 1
-  echo "############ $mpi-$mpi_version ############" >> $ENV
-  echo "MPICH=$INSTALL_DIR/$mpiv" >> $ENV
-  echo 'export MPIRUN=$MPICH/bin/mpirun' >> $ENV
-  echo 'export PATH=$PATH:$MPICH/bin:$MPICH/lib:$MPICH/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MPICH/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $mpi-$mpi_version ############" >>$ENV
+  echo "MPICH=$INSTALL_DIR/$mpiv" >>$ENV
+  echo 'export MPIRUN=$MPICH/bin/mpirun' >>$ENV
+  echo 'export PATH=$PATH:$MPICH/bin:$MPICH/lib:$MPICH/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MPICH/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -184,12 +184,12 @@ OPT_OPENMPI() {
   CC=$CC CXX=$CXX F77=$F77 FC=$FC ./configure --prefix=$INSTALL_DIR/$openmpi
   make
   $sudo make install
-  echo "############ $openmpi ############" >> $ENV
-  echo "OPENMPI=$INSTALL_DIR/$openmpi" >> $ENV
-  echo 'export MPIRUN=$OPENMPI/bin/mpirun' >> $ENV
-  echo 'export PATH=$PATH:$OPENMPI/bin:$OPENMPI/lib:$OPENMPI/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENMPI/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $openmpi ############" >>$ENV
+  echo "OPENMPI=$INSTALL_DIR/$openmpi" >>$ENV
+  echo 'export MPIRUN=$OPENMPI/bin/mpirun' >>$ENV
+  echo 'export PATH=$PATH:$OPENMPI/bin:$OPENMPI/lib:$OPENMPI/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENMPI/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -208,11 +208,11 @@ OPT_ZLIB() {
   ./configure --prefix=$INSTALL_DIR/$zlib || exit 1
   make || exit 1
   $sudo make install || exit 1
-  echo "###### $zlib #########" >> $ENV
-  echo "ZLIB=$INSTALL_DIR/$zlib" >> $ENV
-  echo 'export PATH=$PATH:$ZLIB/lib:$ZLIB/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ZLIB/lib' >> $ENV
-  echo >> $ENV
+  echo "###### $zlib #########" >>$ENV
+  echo "ZLIB=$INSTALL_DIR/$zlib" >>$ENV
+  echo 'export PATH=$PATH:$ZLIB/lib:$ZLIB/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ZLIB/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -233,11 +233,11 @@ OPT_HDF5() {
   make || exit 1
   #make check || exit 1
   $sudo make install || exit 1
-  echo "####### $hdf5 #######" >> $ENV
-  echo "HDF5=$INSTALL_DIR/$hdf5" >> $ENV
-  echo 'export PATH=$PATH:$HDF5/bin:$HDF5/lib:$HDF5/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HDF5/lib' >> $ENV
-  echo >> $ENV
+  echo "####### $hdf5 #######" >>$ENV
+  echo "HDF5=$INSTALL_DIR/$hdf5" >>$ENV
+  echo 'export PATH=$PATH:$HDF5/bin:$HDF5/lib:$HDF5/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HDF5/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -256,25 +256,25 @@ OPT_NC() {
   make || exit 1
   $sudo make install || exit 1
   echo
-  echo "########## $netcdf #######" >> $ENV
-  echo "export NETCDF=$INSTALL_DIR/${netcdf}" >> $ENV
-  echo 'export PATH=$PATH:$NETCDF/bin:$NETCDF/lib:$NETCDF/include' >> $ENV
-  echo >> $ENV
-  echo 'export NETCDF_ROOT=$NETCDF' >> $ENV
-  echo 'export NETCDF4_ROOT=$NETCDF' >> $ENV
-  echo 'export NETCDF_LIB=$NETCDF/lib' >> $ENV
-  echo 'export NETCDF_INC=$NETCDF/include' >> $ENV
-  echo >> $ENV
-  echo 'export NETCDF_GF_ROOT=$NETCDF' >> $ENV
-  echo 'export NETCDF4_GF_ROOT=$NETCDF' >> $ENV
-  echo 'export NETCDF_GF_LIB=$NETCDF/lib' >> $ENV
-  echo 'export NETCDF_GF_INC=$NETCDF/include' >> $ENV
-  echo >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NETCDF_LIB' >> $ENV
-  echo >> $ENV
-  echo 'export CPPFLAGS="$CPPFLAGS -I$NETCDF_INC"' >> $ENV
-  echo 'export LDFLAGS="$LDFLAGS -L$NETCDF_LIB"' >> $ENV
-  echo >> $ENV
+  echo "########## $netcdf #######" >>$ENV
+  echo "export NETCDF=$INSTALL_DIR/${netcdf}" >>$ENV
+  echo 'export PATH=$PATH:$NETCDF/bin:$NETCDF/lib:$NETCDF/include' >>$ENV
+  echo >>$ENV
+  echo 'export NETCDF_ROOT=$NETCDF' >>$ENV
+  echo 'export NETCDF4_ROOT=$NETCDF' >>$ENV
+  echo 'export NETCDF_LIB=$NETCDF/lib' >>$ENV
+  echo 'export NETCDF_INC=$NETCDF/include' >>$ENV
+  echo >>$ENV
+  echo 'export NETCDF_GF_ROOT=$NETCDF' >>$ENV
+  echo 'export NETCDF4_GF_ROOT=$NETCDF' >>$ENV
+  echo 'export NETCDF_GF_LIB=$NETCDF/lib' >>$ENV
+  echo 'export NETCDF_GF_INC=$NETCDF/include' >>$ENV
+  echo >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NETCDF_LIB' >>$ENV
+  echo >>$ENV
+  echo 'export CPPFLAGS="$CPPFLAGS -I$NETCDF_INC"' >>$ENV
+  echo 'export LDFLAGS="$LDFLAGS -L$NETCDF_LIB"' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -325,12 +325,12 @@ OPT_PROJ4() {
   $sudo make install || exit 1
   ## must create libproj4.so for proj4-fortran install process
   $sudo ln -sf $INSTALL_DIR/$proj/lib/libproj.so $INSTALL_DIR/$proj/lib/libproj4.so
-  echo "############ $proj ############" >> $ENV
-  echo "PROJ4=$INSTALL_DIR/$proj" >> $ENV
-  echo 'export PATH=$PATH:$PROJ4/bin:$PROJ4/lib:$PROJ4/include' >> $ENV
-  echo 'export PROJ_PREFIX=$PROJ4/lib' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJ4/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $proj ############" >>$ENV
+  echo "PROJ4=$INSTALL_DIR/$proj" >>$ENV
+  echo 'export PATH=$PATH:$PROJ4/bin:$PROJ4/lib:$PROJ4/include' >>$ENV
+  echo 'export PROJ_PREFIX=$PROJ4/lib' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJ4/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -356,11 +356,11 @@ OPT_PROJ4F() {
   echo -e " ${RED}After that, you must close and reopen your session in another shell to load new env variables added in .bashrc ${NC}"
   echo
   PAUSE 'Press [Enter] key to continue...'
-  echo "############ $proj4fortran ############" >> $ENV
-  echo "PROJ4FORTRAN=$INSTALL_DIR/$proj4fortran" >> $ENV
-  echo 'export PATH=$PATH:$PROJ4FORTRAN/lib:$PROJ4FORTRAN/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJ4FORTRAN/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $proj4fortran ############" >>$ENV
+  echo "PROJ4FORTRAN=$INSTALL_DIR/$proj4fortran" >>$ENV
+  echo 'export PATH=$PATH:$PROJ4FORTRAN/lib:$PROJ4FORTRAN/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJ4FORTRAN/lib' >>$ENV
+  echo >>$ENV
   make || exit 1
   $sudo make install || exit 1
 }
@@ -388,11 +388,11 @@ OPT_IPHC() {
   make
   make check
   $sudo make install
-  echo "############ $iphreeqc ############" >> $ENV
-  echo "IPHREEQC=$INSTALL_DIR/$iphreeqc" >> $ENV
-  echo 'export PATH=$PATH:$IPHREEQC/lib:$IPHREEQC/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$IPHREEQC/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $iphreeqc ############" >>$ENV
+  echo "IPHREEQC=$INSTALL_DIR/$iphreeqc" >>$ENV
+  echo 'export PATH=$PATH:$IPHREEQC/lib:$IPHREEQC/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$IPHREEQC/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
@@ -409,11 +409,11 @@ OPT_PHCRM() {
   CC=$CC FC=$FC ./configure --prefix=$INSTALL_DIR/$phreeqcrm
   make
   $sudo make install
-  echo "############ $phreeqcrm ############" >> $ENV
-  echo "PHREEQCRM=$INSTALL_DIR/$phreeqcrm" >> $ENV
-  echo 'export PATH=$PATH:$PHREEQCRM/lib:$PHREEQCRM/include' >> $ENV
-  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PHREEQCRM/lib' >> $ENV
-  echo >> $ENV
+  echo "############ $phreeqcrm ############" >>$ENV
+  echo "PHREEQCRM=$INSTALL_DIR/$phreeqcrm" >>$ENV
+  echo 'export PATH=$PATH:$PHREEQCRM/lib:$PHREEQCRM/include' >>$ENV
+  echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PHREEQCRM/lib' >>$ENV
+  echo >>$ENV
 }
 
 #
