@@ -1,4 +1,6 @@
-# MOHID - Water Modelling System  
+# THIS IS A FORK FROM OFFICIAL MOHID Water Modelling System REPOSITORY WITH mohid-in-linux UPDATED
+
+# MOHID - Water Modelling System
 
 MOHID is short for Modelo Hidrodinâmico which is hydrodynamic model in Portuguese. MOHID is a three-dimensional water modelling system, developed by MARETEC (Marine and Environmental Technology Research Center) at Instituto Superior Técnico (IST) which belongs to Lisbon University.
 
@@ -6,7 +8,7 @@ MOHID is short for Modelo Hidrodinâmico which is hydrodynamic model in Portugue
 This is the MOHID Water Modelling System OFFICIAL repository
 
 ## Overview
-MOHID is a modular finite volumes water-modelling system written in ANSI-Fortran95 using an Object-oriented programming philosophy, integrating diverse mathematical models and supporting graphical user interfaces that manage all the pre- and post-processing. 
+MOHID is a modular finite volumes water-modelling system written in ANSI-Fortran95 using an Object-oriented programming philosophy, integrating diverse mathematical models and supporting graphical user interfaces that manage all the pre- and post-processing.
 MOHID allows the adoption of an integrated modelling philosophy, not only of processes (physical and biogeochemical), but also of different scales (allowing the use of nested models) and systems (estuaries and watersheds), due to the adoption of an object oriented programming philosophy.
 The development of MOHID started back in 1985. Since that time a continuous development effort of new features has been maintained. Model updates and improvements were made available in a regular basis were used in the framework of many research and engineering projects.
 All programs included in MOHID Water Modelling System are built on the top of one or more base libraries and the two core executables files can be found at the top of the pyramid:
